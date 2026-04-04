@@ -31,6 +31,12 @@ social:
     - https://twitter.com/JavierAbadM
     - https://github.com/jaabmar
 
+defaults:
+  - scope:
+      path: "google9b945301095086cd.html"
+    values:
+      sitemap: false
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
