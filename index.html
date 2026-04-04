@@ -3,208 +3,560 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name</title>
-  <meta name="description" content="Personal academic website" />
+  <title>Javier Abad</title>
+  <meta
+    name="description"
+    content="Javier Abad is a PhD student at the ETH AI Center working on safe foundation models, privacy-preserving machine learning, and causal inference."
+  />
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap");
+
     :root {
-      --bg: #faf9f7;
-      --text: #1f1f1f;
-      --muted: #666;
-      --line: #e8e5df;
-      --link: #1f1f1f;
-      --link-hover: #7b5e57;
-      --max-width: 880px;
-      --radius: 18px;
+      --bg: #f4efe8;
+      --bg-deep: #ece5db;
+      --surface: rgba(255, 252, 247, 0.74);
+      --surface-strong: rgba(255, 252, 247, 0.92);
+      --text: #1f2825;
+      --muted: #5f6d66;
+      --line: rgba(31, 40, 37, 0.12);
+      --accent: #1d6a57;
+      --accent-soft: rgba(29, 106, 87, 0.1);
+      --shadow: 0 24px 60px rgba(34, 44, 39, 0.1);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max-width: 1120px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      min-height: 100vh;
+      font-family: "Manrope", "Segoe UI", sans-serif;
       color: var(--text);
-      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(100, 155, 143, 0.18), transparent 34%),
+        radial-gradient(circle at 85% 12%, rgba(206, 178, 133, 0.22), transparent 26%),
+        linear-gradient(180deg, #f7f3ed 0%, var(--bg) 46%, var(--bg-deep) 100%);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 70%);
+      z-index: -1;
     }
 
     a {
-      color: var(--link);
+      color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s ease, border-color 0.2s ease;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
     }
 
     a:hover {
-      color: var(--link-hover);
-      border-color: var(--link-hover);
+      color: var(--accent);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .page {
-      width: min(var(--max-width), calc(100% - 32px));
+      width: min(var(--max-width), calc(100% - 40px));
       margin: 0 auto;
-      padding: 40px 0 80px;
+      padding: 28px 0 52px;
     }
 
     .topbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      padding: 6px 0 28px;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 20px;
       position: sticky;
-      top: 0;
-      background: rgba(250, 249, 247, 0.88);
-      backdrop-filter: blur(12px);
-      z-index: 10;
+      top: 18px;
+      z-index: 20;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(250, 247, 241, 0.7);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 36px rgba(34, 44, 39, 0.08);
     }
 
     .brand {
-      font-size: 0.98rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .brand::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      flex: 0 0 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #275746 0%, #d4b27f 100%);
+      box-shadow: 0 0 0 6px rgba(29, 106, 87, 0.08);
     }
 
     .nav {
       display: flex;
+      align-items: center;
       gap: 18px;
       flex-wrap: wrap;
-      font-size: 0.95rem;
+      justify-content: flex-end;
+      font-size: 0.92rem;
       color: var(--muted);
+    }
+
+    .nav a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav a:hover {
+      border-color: rgba(29, 106, 87, 0.35);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.3fr 0.8fr;
-      gap: 40px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 380px);
+      gap: 38px;
       align-items: center;
-      padding: 30px 0 28px;
+      padding: 48px 0 34px;
     }
 
-    h1, h2, h3 {
+    .hero-copy,
+    .hero-photo,
+    section {
+      animation: rise 0.75s ease both;
+    }
+
+    .hero-copy {
+      padding: 12px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid rgba(29, 106, 87, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 252, 247, 0.72);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
       margin: 0;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 6vw, 4.4rem);
-      line-height: 0.95;
-      margin-bottom: 14px;
+      margin-top: 18px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(4rem, 9vw, 7rem);
+      line-height: 0.92;
+      font-weight: 400;
     }
 
-    .subtitle {
-      font-size: 1.06rem;
-      color: var(--muted);
-      max-width: 48ch;
-      margin-bottom: 18px;
+    .intro {
+      max-width: 58ch;
+      margin: 18px 0 0;
+      font-size: 1.12rem;
+      color: rgba(31, 40, 37, 0.88);
     }
 
-    .links {
+    .intro strong {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .hero-meta {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      font-size: 0.96rem;
-      margin-top: 20px;
+      gap: 10px;
+      margin-top: 26px;
     }
 
-    .portrait-wrap {
-      display: flex;
-      justify-content: center;
-    }
-
-    .portrait {
-      width: min(100%, 280px);
-      aspect-ratio: 4 / 5;
-      border-radius: 28px;
-      background: linear-gradient(145deg, #ece7df, #dcd4c8);
-      border: 1px solid var(--line);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.06);
-      display: flex;
+    .hero-meta span,
+    .link-cluster a {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 252, 247, 0.6);
       color: var(--muted);
-      font-size: 0.95rem;
-      text-align: center;
-      padding: 20px;
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .link-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .link-cluster a:hover {
+      background: rgba(255, 252, 247, 0.92);
+      border-color: rgba(29, 106, 87, 0.24);
+    }
+
+    .hero-photo {
+      position: relative;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255, 252, 247, 0.92), rgba(255, 252, 247, 0.74)),
+        linear-gradient(135deg, rgba(29, 106, 87, 0.08), rgba(212, 178, 127, 0.16));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(31, 40, 37, 0.08);
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 24px;
+    }
+
+    .hero-caption {
+      margin-top: 14px;
+      padding-left: 4px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     section {
-      padding: 30px 0;
-      border-top: 1px solid var(--line);
+      margin-top: 26px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: var(--radius-xl);
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(34, 44, 39, 0.05);
     }
 
-    section h2 {
-      font-size: 1.2rem;
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
       margin-bottom: 18px;
     }
 
-    .about p,
-    .contact p {
-      margin: 0 0 14px;
-      max-width: 70ch;
+    .section-head h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
     }
 
-    .news-list,
-    .pub-list {
+    .section-kicker {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.8fr);
+      gap: 28px;
+    }
+
+    .about-copy p {
+      margin: 0 0 16px;
+      max-width: 66ch;
+      font-size: 1rem;
+      color: rgba(31, 40, 37, 0.88);
+    }
+
+    .fact-panel {
+      padding: 22px;
+      border: 1px solid rgba(31, 40, 37, 0.08);
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+    }
+
+    .fact-label {
+      margin: 0 0 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .fact-list {
       display: grid;
       gap: 14px;
     }
 
-    .news-item,
-    .pub-item {
-      padding: 14px 0;
+    .fact-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
     }
 
-    .date {
+    .fact-item span {
       color: var(--muted);
-      min-width: 100px;
-      display: inline-block;
-      font-size: 0.94rem;
+      font-size: 0.95rem;
     }
 
-    .pub-title {
-      font-weight: 600;
-      margin-bottom: 6px;
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
     }
 
-    .pub-meta {
-      color: var(--muted);
+    .research-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 250px;
+      padding: 24px;
+      border: 1px solid rgba(31, 40, 37, 0.08);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.92));
+    }
+
+    .research-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .research-card p {
+      margin: 0;
+      color: rgba(31, 40, 37, 0.84);
       font-size: 0.96rem;
+    }
+
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .paper-link:hover {
+      color: #184f42;
+    }
+
+    .paper-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .paper-item {
+      padding: 18px 20px;
+      border: 1px solid rgba(31, 40, 37, 0.08);
+      border-radius: var(--radius-md);
+      background: rgba(255, 252, 247, 0.78);
+    }
+
+    .paper-item strong {
+      display: block;
+      font-size: 0.98rem;
       margin-bottom: 6px;
     }
 
-    .tagline {
-      display: inline-block;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-      background: rgba(255,255,255,0.6);
-    }
-
-    .footer {
-      padding-top: 28px;
+    .paper-item span {
       color: var(--muted);
       font-size: 0.92rem;
     }
 
-    @media (max-width: 760px) {
-      .topbar {
-        position: static;
-        padding-bottom: 20px;
+    .news-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 124px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(31, 40, 37, 0.08);
+    }
+
+    .news-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .news-date {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .news-copy {
+      font-size: 1rem;
+      color: rgba(31, 40, 37, 0.88);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .contact-copy p {
+      margin: 0;
+      max-width: 60ch;
+      font-size: 1rem;
+      color: rgba(31, 40, 37, 0.88);
+    }
+
+    .contact-panel {
+      padding: 22px;
+      border: 1px solid rgba(31, 40, 37, 0.08);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 252, 247, 0.8);
+    }
+
+    .contact-panel a {
+      display: block;
+      width: fit-content;
+      margin-top: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 28px 4px 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero-copy,
+      .hero-photo,
+      section {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .about-grid,
+      .contact-grid,
+      .research-grid,
+      .paper-strip {
+        grid-template-columns: 1fr;
       }
 
       .hero {
-        grid-template-columns: 1fr;
         gap: 24px;
       }
+    }
 
-      .portrait-wrap {
+    @media (max-width: 760px) {
+      .page {
+        width: min(var(--max-width), calc(100% - 24px));
+        padding-top: 18px;
+      }
+
+      .topbar {
+        position: static;
+        padding: 16px 18px;
+        border-radius: 26px;
+      }
+
+      .brand {
+        width: 100%;
+      }
+
+      .nav {
+        width: 100%;
         justify-content: flex-start;
+        gap: 14px;
+      }
+
+      h1 {
+        font-size: clamp(3.4rem, 18vw, 5rem);
+      }
+
+      section {
+        padding: 24px 20px;
+      }
+
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -212,85 +564,201 @@
 <body>
   <div class="page">
     <header class="topbar">
-      <div class="brand">Your Name</div>
-      <nav class="nav">
+      <div class="brand">
+        <span>Javier Abad</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#research">Research</a>
         <a href="#news">News</a>
-        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero" style="border-top: none; padding-top: 10px;">
-        <div>
-          <div class="tagline">Researcher · Engineer · Builder</div>
-          <h1>Your Name</h1>
-          <p class="subtitle">
-            I work on machine learning, safety, and robust AI systems. This website is a simple place to share my research, writing, and selected projects.
+      <section class="hero" style="margin-top: 24px;">
+        <div class="hero-copy">
+          <div class="eyebrow">PhD Student at ETH AI Center</div>
+          <h1>Javier Abad</h1>
+          <p class="intro">
+            I build machine learning methods for <strong>safe, private, and reliable AI systems</strong>.
+            My work connects foundation models, privacy-preserving learning, and causal inference, with an emphasis on methods that stay rigorous in theory and useful in practice.
           </p>
-          <div class="links">
-            <a href="#">CV</a>
-            <a href="#">Google Scholar</a>
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-            <a href="mailto:you@example.com">Email</a>
+          <div class="hero-meta" aria-label="Highlights">
+            <span>Zurich</span>
+            <span>AI safety</span>
+            <span>Privacy</span>
+            <span>Causal inference</span>
+          </div>
+          <div class="link-cluster" aria-label="Links">
+            <a href="mailto:javier.abadmartinez@ai.ethz.ch">Email</a>
+            <a href="https://www.linkedin.com/in/javiabadm/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://scholar.google.es/citations?user=gGHkUhkAAAAJ&amp;hl=es" target="_blank" rel="noreferrer">Scholar</a>
+            <a href="https://twitter.com/JavierAbadM" target="_blank" rel="noreferrer">X</a>
+            <a href="https://github.com/jaabmar" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
-        <div class="portrait-wrap">
-          <div class="portrait">Add your photo here</div>
+        <div class="hero-photo">
+          <img src="artifacts/portrait.jpeg" alt="Portrait of Javier Abad" />
+          <div class="hero-caption">Research across safe foundation models, private data, and robust decision-making.</div>
         </div>
       </section>
 
-      <section id="about" class="about">
-        <h2>About</h2>
-        <p>
-          Write a short introduction here. A good version is 2 to 3 paragraphs: what you do, where you are based, and what kinds of problems you care about.
-        </p>
-        <p>
-          You can also add one more sentence with personality: teaching, art, interdisciplinary work, collaborations, or anything that makes the page feel more like you.
-        </p>
+      <section id="about">
+        <div class="section-head">
+          <h2>About</h2>
+          <div class="section-kicker">Researcher, engineer, builder</div>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I am a Doctoral Student in Machine Learning and a Fellow at the ETH AI Center in Zurich, advised by Fanny Yang.
+              I work on the methodological challenges behind AI systems that need to remain robust when the stakes are high, from memorization in language models to privacy-preserving data release and hidden confounding in observational studies.
+            </p>
+            <p>
+              Alongside my PhD, I have worked at Apple on image and video generation for Apple Intelligence and at Google DeepMind on student-teacher distillation with the Gemma post-training team.
+              Before ETH, I worked on conformal prediction and interpretability at Cambridge and developed machine learning systems for fighting financial crime at Featurespace.
+            </p>
+          </div>
+          <aside class="fact-panel" aria-label="Profile summary">
+            <p class="fact-label">Current Focus</p>
+            <div class="fact-list">
+              <div class="fact-item">
+                <strong>Safe foundation models</strong>
+                <span>Memorization, copyright protection, and post-training behavior.</span>
+              </div>
+              <div class="fact-item">
+                <strong>Private data methods</strong>
+                <span>Differential privacy and privacy-preserving data synthesis.</span>
+              </div>
+              <div class="fact-item">
+                <strong>Causal decision-making</strong>
+                <span>Hidden confounding, treatment effects, and robust inference.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="research">
+        <div class="section-head">
+          <h2>Research</h2>
+          <div class="section-kicker">Three threads, one goal: machine learning you can trust</div>
+        </div>
+        <div class="research-grid">
+          <article class="research-card">
+            <div>
+              <h3>Foundation models that behave better</h3>
+              <p>
+                I study memorization, regurgitation, and post-training dynamics in foundation models, with an emphasis on techniques that improve safety without making models unusable.
+              </p>
+            </div>
+            <a class="paper-link" href="https://arxiv.org/abs/2412.06619" target="_blank" rel="noreferrer">Copyright-Protected Language Generation via Adaptive Model Fusion</a>
+          </article>
+
+          <article class="research-card">
+            <div>
+              <h3>Privacy-preserving machine learning</h3>
+              <p>
+                I work on methods for releasing or learning from sensitive data while retaining practical utility, especially in settings where privacy is a hard requirement rather than a nice-to-have.
+              </p>
+            </div>
+            <a class="paper-link" href="https://arxiv.org/abs/2401.17823" target="_blank" rel="noreferrer">PrivPGD for differentially private data synthesis</a>
+          </article>
+
+          <article class="research-card">
+            <div>
+              <h3>Causal inference under hidden bias</h3>
+              <p>
+                I develop methods for identifying treatment effects and quantifying hidden confounding, especially when real-world decisions depend on observational data that cannot be trusted at face value.
+              </p>
+            </div>
+            <a class="paper-link" href="https://arxiv.org/abs/2503.14459" target="_blank" rel="noreferrer">Doubly robust identification from multiple environments</a>
+          </article>
+        </div>
+
+        <div class="paper-strip" aria-label="Selected papers">
+          <article class="paper-item">
+            <strong>Efficient Randomized Experiments Using Foundation Models</strong>
+            <span>NeurIPS 2025</span>
+          </article>
+          <article class="paper-item">
+            <strong>Copyright-Protected Language Generation via Adaptive Model Fusion</strong>
+            <span>ICLR 2025 Oral</span>
+          </article>
+          <article class="paper-item">
+            <strong>Doubly robust identification of treatment effects from multiple environments</strong>
+            <span>ICLR 2025</span>
+          </article>
+        </div>
       </section>
 
       <section id="news">
-        <h2>News</h2>
+        <div class="section-head">
+          <h2>Recent News</h2>
+          <div class="section-kicker">A few recent stops along the way</div>
+        </div>
         <div class="news-list">
-          <div class="news-item"><span class="date">Apr 2026</span> Add a short update about a paper, talk, internship, or project.</div>
-          <div class="news-item"><span class="date">Mar 2026</span> Another short update with an optional <a href="#">link</a>.</div>
-          <div class="news-item"><span class="date">Jan 2026</span> Keep this section concise. Three to six items is usually enough.</div>
+          <article class="news-item">
+            <div class="news-date">Apr 2025</div>
+            <div class="news-copy">
+              Presented <a href="https://openreview.net/pdf?id=kRoWeLTpL4" target="_blank" rel="noreferrer">Copyright-Protected Language Generation via Adaptive Model Fusion</a>
+              as an oral at ICLR 2025 in Singapore.
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-date">Sep 2024</div>
+            <div class="news-copy">
+              Joined Google DeepMind as a PhD Student Researcher working with the Gemma post-training team.
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-date">Mar 2024</div>
+            <div class="news-copy">
+              Started working at Apple on image and video generation for Apple Intelligence.
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-date">Oct 2023</div>
+            <div class="news-copy">
+              Visited the Simons Institute at UC Berkeley during my PhD.
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-date">Dec 2022</div>
+            <div class="news-copy">
+              Started my PhD at the ETH AI Center.
+            </div>
+          </article>
         </div>
       </section>
 
-      <section id="publications">
-        <h2>Selected Publications</h2>
-        <div class="pub-list">
-          <article class="pub-item">
-            <div class="pub-title">Paper Title Goes Here</div>
-            <div class="pub-meta">Your Name, Coauthor Name, Coauthor Name · Conference / Journal, 2026</div>
-            <div><a href="#">paper</a> · <a href="#">code</a> · <a href="#">project page</a></div>
-          </article>
-
-          <article class="pub-item">
-            <div class="pub-title">Another Project or Publication</div>
-            <div class="pub-meta">Your Name, Coauthor Name · Venue, 2025</div>
-            <div><a href="#">paper</a> · <a href="#">slides</a></div>
-          </article>
+      <section id="contact">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <div class="section-kicker">Always happy to hear about research and collaborations</div>
         </div>
-      </section>
-
-      <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>
-          Best way to reach me: <a href="mailto:you@example.com">you@example.com</a>
-        </p>
-        <p>
-          Optional: You can add office location, collaboration note, or a sentence about recruiting / students / speaking invitations.
-        </p>
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <p>
+              The easiest way to reach me is by email. If you would like to talk about research, student projects, or collaboration opportunities, feel free to get in touch.
+            </p>
+          </div>
+          <div class="contact-panel">
+            <p class="fact-label">Get in touch</p>
+            <a href="mailto:javier.abadmartinez@ai.ethz.ch">javier.abadmartinez@ai.ethz.ch</a>
+            <a href="https://www.linkedin.com/in/javiabadm/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://scholar.google.es/citations?user=gGHkUhkAAAAJ&amp;hl=es" target="_blank" rel="noreferrer">Google Scholar</a>
+            <a href="https://twitter.com/JavierAbadM" target="_blank" rel="noreferrer">X</a>
+            <a href="https://github.com/jaabmar" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
-      © 2026 Your Name
+      <span>© 2026 Javier Abad</span>
+      <span>Built as a minimal single-page homepage.</span>
     </footer>
   </div>
 </body>
