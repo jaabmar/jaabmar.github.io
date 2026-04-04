@@ -2,6 +2,7 @@
   authors: Y Assogba, J Cortellazzi, J Abad, P Rodriguez, X Suau, and A Blaas
   venue: arXiv preprint arXiv:2602.12418
   year: 2026
+  featured: false
   url: https://arxiv.org/abs/2602.12418
   link_label: arXiv
 
@@ -9,6 +10,7 @@
   authors: P De Bartolomeis, J Abad, G Wang, K Donhauser, R M Duch, F Yang, and I J Dahabreh
   venue: NeurIPS
   year: 2025
+  featured: true
   url: https://arxiv.org/abs/2502.04262
   link_label: arXiv
 
@@ -16,6 +18,7 @@
   authors: P De Bartolomeis, J Kostin, J Abad, Y Wang, and F Yang
   venue: ICLR
   year: 2025
+  featured: false
   url: https://arxiv.org/abs/2503.14459
   link_label: arXiv
 
@@ -23,6 +26,7 @@
   authors: J Abad, K Donhauser, F Pinto, and F Yang
   venue: Oral @ ICLR
   year: 2025
+  featured: true
   url: https://arxiv.org/abs/2412.06619
   link_label: arXiv
 
@@ -30,6 +34,7 @@
   authors: P De Bartolomeis, J Abad, K Donhauser, and F Yang
   venue: UAI
   year: 2024
+  featured: true
   url: https://arxiv.org/abs/2404.18905
   link_label: arXiv
 
@@ -37,6 +42,7 @@
   authors: K Donhauser, J Abad, N Hulkund, and F Yang
   venue: ICML
   year: 2024
+  featured: true
   note: Shared contribution with K Donhauser.
   url: https://arxiv.org/abs/2401.17823
   link_label: arXiv
@@ -45,6 +51,7 @@
   authors: P De Bartolomeis, J Abad, K Donhauser, and F Yang
   venue: AISTATS
   year: 2024
+  featured: true
   note: Shared contribution with P De Bartolomeis.
   url: https://arxiv.org/abs/2312.03871
   link_label: arXiv
@@ -53,5 +60,6 @@
   authors: J Abad, U Bhatt, A Weller, and G Cherubin
   venue: Oral @ AAAI
   year: 2023
+  featured: true
   url: https://arxiv.org/abs/2202.01315
   link_label: arXiv
