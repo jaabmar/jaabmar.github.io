@@ -1,0 +1,39 @@
+title: Javier Abad
+tagline: ETH AI Center | Machine Learning Researcher
+description: Javier Abad Martinez, who publishes as Javier Abad, is a PhD student at the ETH AI Center working on safe foundation models, privacy-preserving machine learning, and causal inference.
+url: "https://jaabmar.github.io"
+baseurl: ""
+lang: en
+timezone: Europe/Madrid
+
+author:
+  name: Javier Abad
+  full_name: Javier Abad Martinez
+  email: javier.abadmartinez@ai.ethz.ch
+  twitter: JavierAbadM
+
+scholar_userid: gGHkUhkAAAAJ
+linkedin_username: javiabadm
+twitter_username: JavierAbadM
+github_username: jaabmar
+google_site_verification: google9b945301095086cd
+logo: /artifacts/portrait.jpeg
+
+twitter:
+  username: JavierAbadM
+  card: summary_large_image
+
+social:
+  name: Javier Abad
+  links:
+    - https://www.linkedin.com/in/javiabadm/
+    - https://scholar.google.es/citations?user=gGHkUhkAAAAJ&hl=es
+    - https://twitter.com/JavierAbadM
+    - https://github.com/jaabmar
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+kramdown:
+  input: GFM
