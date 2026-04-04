@@ -50,11 +50,11 @@
       url: https://github.com/jaabmar/kernel-test-bias
 
 - title: "Privacy-preserving data release leveraging optimal transport and particle gradient descent"
-  authors: K Donhauser, J Abad, N Hulkund, and F Yang
+  authors: K Donhauser*, J Abad*, N Hulkund, and F Yang
   venue: ICML
   year: 2024
   featured: true
-  note: Shared authorship with K Donhauser.
+  note: "* shared authorship"
   links:
     - label: paper
       url: https://arxiv.org/abs/2401.17823
@@ -62,11 +62,11 @@
       url: https://github.com/jaabmar/private-pgd
 
 - title: "Hidden yet quantifiable: A lower bound for confounding strength using randomized trials"
-  authors: P De Bartolomeis, J Abad, K Donhauser, and F Yang
+  authors: P De Bartolomeis*, J Abad*, K Donhauser, and F Yang
   venue: AISTATS
   year: 2024
   featured: true
-  note: Shared authorship with P De Bartolomeis.
+  note: "* shared authorship"
   links:
     - label: paper
       url: https://arxiv.org/abs/2312.03871
