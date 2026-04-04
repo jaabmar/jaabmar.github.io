@@ -13,5 +13,11 @@
 - date: Oct 2024
   text: Visited the Simons Institute at UC Berkeley.
 
+- date: Feb 2023
+  prefix: Presented
+  link_url: https://arxiv.org/abs/2202.01315
+  link_text: Approximating full conformal prediction at scale via influence functions
+  suffix: as an oral at AAAI 2023 in Washington, DC.
+
 - date: Dec 2022
   text: Started my PhD at the ETH AI Center.
