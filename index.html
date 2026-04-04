@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Javier Abad
-description: Javier Abad Martinez, who publishes as Javier Abad, is a PhD student at the ETH AI Center working on safe foundation models, privacy-preserving machine learning, and causal inference.
-image: /artifacts/portrait.jpeg
+description: Javier Abad Martinez, who publishes as Javier Abad, is a PhD student at the ETH AI Center working on language model safety, privacy-preserving machine learning, and causal inference.
+image: /artifacts/social-preview.png
 ---
 <div class="page">
   <header class="topbar">
     <div class="brand">
       <h1><a class="brand-link" href="{{ '/' | relative_url }}">{{ site.author.name }}</a></h1>
-      <p class="subtitle">PhD Student at the ETH AI Center in Zurich</p>
+      <p class="subtitle">PhD Student at the ETH AI Center working on Language Model Safety, Privacy, and Causal Inference</p>
     </div>
     <nav class="nav" aria-label="Primary">
       <a href="#about">about</a>
@@ -27,9 +27,9 @@ image: /artifacts/portrait.jpeg
             <a href="https://sml.inf.ethz.ch/group/fannyy/" target="_blank" rel="noreferrer">Fanny Yang</a>.
           </p>
           <p>
-            I work on alignment and safety for language models, privacy-preserving machine learning,
-            and causal inference. During my PhD, I have worked with Apple and Google DeepMind.
-            Before ETH, I was a Research Scientist at Featurespace and conducted research at the University of Cambridge
+            My research focuses on alignment and safety for language models, privacy-preserving machine learning,
+            and causal inference. During my PhD, I have collaborated with Apple and Google DeepMind. Before ETH,
+            I was a Research Scientist at Featurespace and conducted research at the University of Cambridge
             on conformal prediction with
             <a href="https://www.ai.cam.ac.uk/people/adrian-weller/" target="_blank" rel="noreferrer">Adrian Weller MBE</a>
             and on interpretability methods for causal inference with
@@ -58,7 +58,12 @@ image: /artifacts/portrait.jpeg
         {% assign featured_papers = site.data.papers | where: "featured", true %}
         {% for paper in featured_papers %}
           <li>
-            <div class="paper-title">{{ paper.title }}</div>
+            <div class="paper-heading">
+              <div class="paper-title">{{ paper.title }}</div>
+              {% if paper.presentation %}
+                <span class="paper-badge">{{ paper.presentation }}</span>
+              {% endif %}
+            </div>
             <div class="paper-meta">{{ paper.authors }}. {{ paper.venue }} {{ paper.year }}.</div>
             {% if paper.links %}
               <div class="paper-links">
