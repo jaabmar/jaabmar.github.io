@@ -228,6 +228,20 @@ p {
   margin-top: 3px;
 }
 
+.paper-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.paper-links a {
+  text-decoration: none;
+}
+
+.paper-links a:hover {
+  text-decoration: underline;
+}
+
 .paper-note {
   font-style: italic;
 }

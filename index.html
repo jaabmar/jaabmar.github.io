@@ -58,9 +58,11 @@ image: /artifacts/portrait.jpeg
             {% if paper.note %}
               <div class="paper-note">{{ paper.note }}</div>
             {% endif %}
-            {% if paper.url %}
+            {% if paper.links %}
               <div class="paper-links">
-                <a href="{{ paper.url }}" target="_blank" rel="noreferrer">{{ paper.link_label | default: "link" }}</a>
+                {% for link in paper.links %}
+                  <a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.label }}</a>
+                {% endfor %}
               </div>
             {% endif %}
           </li>
