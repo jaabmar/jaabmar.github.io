@@ -5,16 +5,28 @@ description: Javier Abad Martinez, who publishes as Javier Abad, is a PhD studen
 image: /artifacts/social-preview.png
 ---
 <div class="page">
-  <header class="topbar">
+  <header class="masthead" id="top" data-reveal>
+    <div class="brand">
+      <a class="brand-link" href="#top" aria-label="Javier Abad home">
+        <h1>Javier Abad</h1>
+      </a>
+      <p class="subtitle">
+        PhD student at the ETH AI Center working on alignment and safety for language models,
+        privacy-preserving machine learning, and causal inference.
+      </p>
+    </div>
+  </header>
+
+  <div class="topbar">
     <nav class="nav" aria-label="Primary">
       <a href="#about">about</a>
       <a href="#research">research</a>
       <a href="#news">news</a>
     </nav>
-  </header>
+  </div>
 
   <main>
-    <section id="about">
+    <section id="about" data-reveal>
       <h2>about</h2>
       <div class="about-grid">
         <div>
@@ -40,7 +52,7 @@ image: /artifacts/social-preview.png
       </div>
     </section>
 
-    <section id="research">
+    <section id="research" data-reveal>
       <h2>research</h2>
       <p class="section-note">
         Full list on
@@ -54,14 +66,15 @@ image: /artifacts/social-preview.png
       <ul class="paper-list">
         {% assign featured_papers = site.data.papers | where: "featured", true %}
         {% for paper in featured_papers %}
-          <li>
-            <div class="paper-heading">
-              <div class="paper-title">{{ paper.title }}</div>
+          <li class="paper-card" data-reveal>
+            <div class="paper-card-top">
+              <div class="paper-kicker">{{ paper.venue }} {{ paper.year }}</div>
               {% if paper.presentation %}
                 <span class="paper-badge">{{ paper.presentation }}</span>
               {% endif %}
             </div>
-            <div class="paper-meta">{{ paper.authors }}. {{ paper.venue }} {{ paper.year }}.</div>
+            <div class="paper-title">{{ paper.title }}</div>
+            <div class="paper-meta">{{ paper.authors }}</div>
             {% if paper.links %}
               <div class="paper-links">
                 {% for link in paper.links %}
@@ -85,10 +98,8 @@ image: /artifacts/social-preview.png
                         <path d="M15 8 19 12l-4 4"></path>
                         <path d="M13.5 6.5 10.5 17.5"></path>
                       </svg>
-                    {% else %}
-                      <span>{{ link.label }}</span>
                     {% endif %}
-                    <span class="sr-only">{{ link.label | capitalize }}</span>
+                    <span>{{ link.label }}</span>
                   </a>
                 {% endfor %}
               </div>
@@ -98,19 +109,21 @@ image: /artifacts/social-preview.png
       </ul>
     </section>
 
-    <section id="news">
+    <section id="news" data-reveal>
       <h2>news</h2>
       <ul class="news-list">
         {% for item in site.data.news %}
-          <li>
+          <li class="news-item" data-reveal>
             <span class="date">{{ item.date }}</span>
-            {% if item.prefix and item.link_url and item.link_text %}
-              {{ item.prefix }}
-              <a href="{{ item.link_url }}" target="_blank" rel="noreferrer">{{ item.link_text }}</a>
-              {{ item.suffix }}
-            {% else %}
-              {{ item.text }}
-            {% endif %}
+            <div class="news-body">
+              {% if item.prefix and item.link_url and item.link_text %}
+                {{ item.prefix }}
+                <a href="{{ item.link_url }}" target="_blank" rel="noreferrer">{{ item.link_text }}</a>
+                {{ item.suffix }}
+              {% else %}
+                {{ item.text }}
+              {% endif %}
+            </div>
           </li>
         {% endfor %}
       </ul>
@@ -127,14 +140,94 @@ image: /artifacts/social-preview.png
     ];
     var email = String.fromCharCode.apply(null, codes);
     var slot = document.getElementById("email-link");
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+    var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
+    var revealItems = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
 
     if (!slot) {
+      // Keep the script harmless if the obfuscated email slot is not rendered.
+    } else {
+      var link = document.createElement("a");
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      slot.appendChild(link);
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      revealItems.forEach(function (item) {
+        item.classList.add("is-visible");
+      });
+
+      if (navLinks[0]) {
+        navLinks[0].setAttribute("aria-current", "true");
+      }
       return;
     }
 
-    var link = document.createElement("a");
-    link.href = "mailto:" + email;
-    link.textContent = email;
-    slot.appendChild(link);
+    var revealObserver = new IntersectionObserver(
+      function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -10% 0px"
+      }
+    );
+
+    revealItems.forEach(function (item) {
+      if (item.getBoundingClientRect().top < window.innerHeight * 0.9) {
+        item.classList.add("is-visible");
+        return;
+      }
+
+      revealObserver.observe(item);
+    });
+
+    var activeById = new Map();
+
+    navLinks.forEach(function (link) {
+      activeById.set(link.getAttribute("href").slice(1), link);
+    });
+
+    var activeSectionObserver = new IntersectionObserver(
+      function (entries) {
+        var visibleEntries = entries.filter(function (entry) {
+          return entry.isIntersecting;
+        });
+
+        if (!visibleEntries.length) {
+          return;
+        }
+
+        visibleEntries.sort(function (left, right) {
+          return right.intersectionRatio - left.intersectionRatio;
+        });
+
+        var currentLink = activeById.get(visibleEntries[0].target.id);
+
+        navLinks.forEach(function (link) {
+          if (link === currentLink) {
+            link.setAttribute("aria-current", "true");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      },
+      {
+        threshold: [0.2, 0.4, 0.6],
+        rootMargin: "-18% 0px -52% 0px"
+      }
+    );
+
+    sections.forEach(function (section) {
+      activeSectionObserver.observe(section);
+    });
   });
 </script>
