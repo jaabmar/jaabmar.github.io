@@ -226,10 +226,34 @@
 
       .link-row {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 4px;
-        font-size: 0.95rem;
+        align-items: center;
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .link-row a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .link-row a:hover {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .link-row svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
 
       .news-list,
@@ -314,7 +338,6 @@
           <a href="#about">about</a>
           <a href="#papers">papers</a>
           <a href="#news">news</a>
-          <a href="#contact">contact</a>
         </nav>
       </header>
 
@@ -333,11 +356,67 @@
                 Cambridge and Featurespace.
               </p>
               <div class="link-row">
-                <a href="mailto:javier.abadmartinez@ai.ethz.ch">email</a>
-                <a href="https://www.linkedin.com/in/javiabadm/" target="_blank" rel="noreferrer">linkedin</a>
-                <a href="https://scholar.google.es/citations?user=gGHkUhkAAAAJ&amp;hl=es" target="_blank" rel="noreferrer">scholar</a>
-                <a href="https://twitter.com/JavierAbadM" target="_blank" rel="noreferrer">x</a>
-                <a href="https://github.com/jaabmar" target="_blank" rel="noreferrer">github</a>
+                <a href="mailto:javier.abadmartinez@ai.ethz.ch" aria-label="Email" title="Email">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="6" width="18" height="12" rx="1.5"></rect>
+                    <path d="M4.5 8l7.5 6 7.5-6"></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/javiabadm/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect>
+                    <circle cx="8" cy="8" r="1.1" fill="currentColor" stroke="none"></circle>
+                    <path d="M7.25 10.5v6.25"></path>
+                    <path d="M11.25 16.75v-6.25"></path>
+                    <path d="M11.25 13.25c0-1.9 1.2-3 2.8-3 1.7 0 2.7 1.15 2.7 3.25v3.25"></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://scholar.google.es/citations?user=gGHkUhkAAAAJ&amp;hl=es"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Google Scholar"
+                  title="Google Scholar"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M2.5 9.5 12 5l9.5 4.5L12 14z"></path>
+                    <path d="M6 11.25v4.25c1.55 1.2 3.65 1.85 6 1.85s4.45-.65 6-1.85v-4.25"></path>
+                    <path d="M21.5 9.5v5.75"></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://twitter.com/JavierAbadM"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="X"
+                  title="X"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 4.5 19 19.5"></path>
+                    <path d="M19 4.5 5 19.5"></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/jaabmar"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  title="GitHub"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.5 8 9 5.5 12 7l3-1.5L16.5 8"></path>
+                    <path d="M7.5 8C5.95 9.35 5 11.3 5 13.6 5 17.55 8.15 20 12 20s7-2.45 7-6.4c0-2.3-.95-4.25-2.5-5.6"></path>
+                    <circle cx="9.5" cy="11.8" r=".7" fill="currentColor" stroke="none"></circle>
+                    <circle cx="14.5" cy="11.8" r=".7" fill="currentColor" stroke="none"></circle>
+                    <path d="M9.5 15c.65.55 1.45.85 2.5.85s1.85-.3 2.5-.85"></path>
+                  </svg>
+                </a>
               </div>
             </div>
             <div class="portrait">
@@ -463,10 +542,6 @@
           </ul>
         </section>
 
-        <section id="contact">
-          <h2>contact</h2>
-          <p><a href="mailto:javier.abadmartinez@ai.ethz.ch">javier.abadmartinez@ai.ethz.ch</a></p>
-        </section>
       </main>
 
       <footer class="footer">© 2026 Javier Abad</footer>
