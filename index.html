@@ -61,10 +61,31 @@ image: /artifacts/portrait.jpeg
             {% if paper.links %}
               <div class="paper-links">
                 {% for link in paper.links %}
-                  <a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.label }}</a>
-                  {% unless forloop.last %}
-                    <span class="paper-link-sep" aria-hidden="true">·</span>
-                  {% endunless %}
+                  <a
+                    href="{{ link.url }}"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="{{ link.label | capitalize }}"
+                    title="{{ link.label | capitalize }}"
+                  >
+                    {% if link.label == "paper" %}
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8 3.5h6.5L19 8v12.5H8z"></path>
+                        <path d="M14.5 3.5V8H19"></path>
+                        <path d="M10.5 12h6"></path>
+                        <path d="M10.5 15h6"></path>
+                      </svg>
+                    {% elsif link.label == "code" %}
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M9 8 5 12l4 4"></path>
+                        <path d="M15 8 19 12l-4 4"></path>
+                        <path d="M13.5 6.5 10.5 17.5"></path>
+                      </svg>
+                    {% else %}
+                      <span>{{ link.label }}</span>
+                    {% endif %}
+                    <span class="sr-only">{{ link.label | capitalize }}</span>
+                  </a>
                 {% endfor %}
               </div>
             {% endif %}
