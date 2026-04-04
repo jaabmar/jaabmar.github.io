@@ -232,20 +232,37 @@
         font-size: 0.95rem;
       }
 
-      .topic-list,
       .news-list,
       .paper-list {
         margin: 0;
         padding-left: 18px;
       }
 
-      .topic-list li,
+      .paper-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
       .paper-list li {
-        margin-bottom: 10px;
+        margin-bottom: 18px;
       }
 
       .news-list li {
         margin-bottom: 12px;
+      }
+
+      .paper-title {
+        font-weight: 600;
+      }
+
+      .paper-meta,
+      .paper-links {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .paper-links {
+        margin-top: 3px;
       }
 
       .date {
@@ -289,7 +306,7 @@
         </div>
         <nav class="nav" aria-label="Primary">
           <a href="#about">about</a>
-          <a href="#research">research</a>
+          <a href="#papers">papers</a>
           <a href="#news">news</a>
           <a href="#contact">contact</a>
         </nav>
@@ -305,14 +322,9 @@
                 <a href="https://sml.inf.ethz.ch/group/fannyy/" target="_blank" rel="noreferrer">Fanny Yang</a>.
               </p>
               <p>
-                I work on safe foundation models, privacy-preserving machine learning, and causal inference,
-                with a focus on methods that stay rigorous in theory and useful in practice.
-              </p>
-              <p>
-                During my PhD, I have worked at Apple on image and video generation for Apple Intelligence and
-                at Google DeepMind on student-teacher distillation with the Gemma post-training team. Before
-                ETH, I worked on conformal prediction and interpretability at Cambridge and developed machine
-                learning systems for fighting financial crime at Featurespace.
+                I work on safe foundation models, privacy-preserving machine learning, and causal inference.
+                During my PhD, I have spent time at Apple and Google DeepMind; before ETH, I worked at
+                Cambridge and Featurespace.
               </p>
               <div class="link-row">
                 <a href="mailto:javier.abadmartinez@ai.ethz.ch">email</a>
@@ -328,42 +340,61 @@
           </div>
         </section>
 
-        <section id="research">
-          <h2>research</h2>
-          <p>I am especially interested in the following themes:</p>
-          <ul class="topic-list">
-            <li>
-              <strong>Safe foundation models.</strong> Memorization, copyright protection, and post-training
-              behavior in large models.
-            </li>
-            <li>
-              <strong>Privacy-preserving machine learning.</strong> Differential privacy and methods for
-              learning from sensitive data while preserving utility.
-            </li>
-            <li>
-              <strong>Causal inference.</strong> Hidden confounding, treatment effects, and robust inference
-              from observational data.
-            </li>
-          </ul>
-          <p style="margin-top: 18px;">Selected papers:</p>
+        <section id="papers">
+          <h2>papers</h2>
           <ul class="paper-list">
             <li>
-              <a href="https://arxiv.org/abs/2502.04262" target="_blank" rel="noreferrer">
-                Efficient Randomized Experiments Using Foundation Models
-              </a>
-              . NeurIPS 2025.
+              <div class="paper-title">Efficient Randomized Experiments Using Foundation Models</div>
+              <div class="paper-meta">
+                Piersilvio De Bartolomeis, Javier Abad, Guanbo Wang, Konstantin Donhauser, Raymond M.
+                Duch, Fanny Yang, and Issa J. Dahabreh. NeurIPS 2025.
+              </div>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2502.04262" target="_blank" rel="noreferrer">arXiv</a>
+                · <a href="https://github.com/jaabmar/HAIPW" target="_blank" rel="noreferrer">code</a>
+              </div>
             </li>
             <li>
-              <a href="https://arxiv.org/abs/2412.06619" target="_blank" rel="noreferrer">
-                Copyright-Protected Language Generation via Adaptive Model Fusion
-              </a>
-              . ICLR 2025 Oral.
+              <div class="paper-title">Doubly robust identification of treatment effects from multiple environments</div>
+              <div class="paper-meta">
+                Piersilvio De Bartolomeis, Julia Kostin, Javier Abad, Yixin Wang, and Fanny Yang. ICLR
+                2025.
+              </div>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2503.14459" target="_blank" rel="noreferrer">arXiv</a>
+                · <a href="https://github.com/jaabmar/RAMEN" target="_blank" rel="noreferrer">code</a>
+              </div>
             </li>
             <li>
-              <a href="https://arxiv.org/abs/2503.14459" target="_blank" rel="noreferrer">
-                Doubly robust identification of treatment effects from multiple environments
-              </a>
-              . ICLR 2025.
+              <div class="paper-title">Copyright-Protected Language Generation via Adaptive Model Fusion</div>
+              <div class="paper-meta">
+                Javier Abad, Konstantin Donhauser, Francesco Pinto, and Fanny Yang. ICLR 2025 Oral.
+              </div>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2412.06619" target="_blank" rel="noreferrer">arXiv</a>
+                · <a href="https://github.com/jaabmar/cp_fuse" target="_blank" rel="noreferrer">code</a>
+              </div>
+            </li>
+            <li>
+              <div class="paper-title">Privacy-preserving data release leveraging optimal transport and particle gradient descent</div>
+              <div class="paper-meta">
+                Konstantin Donhauser, Javier Abad, Neha Hulkund, and Fanny Yang. ICML 2024.
+              </div>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2401.17823" target="_blank" rel="noreferrer">arXiv</a>
+                · <a href="https://github.com/jaabmar/private-pgd" target="_blank" rel="noreferrer">code</a>
+              </div>
+            </li>
+            <li>
+              <div class="paper-title">Hidden yet quantifiable: A lower bound for confounding strength using randomized trials</div>
+              <div class="paper-meta">
+                Piersilvio De Bartolomeis, Javier Abad, Konstantin Donhauser, and Fanny Yang. AISTATS
+                2024.
+              </div>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2312.03871" target="_blank" rel="noreferrer">arXiv</a>
+                · <a href="https://github.com/jaabmar/confounder-lower-bound" target="_blank" rel="noreferrer">code</a>
+              </div>
             </li>
           </ul>
         </section>
@@ -372,6 +403,10 @@
           <h2>news</h2>
           <ul class="news-list">
             <li>
+              <span class="date">Sep 2025</span> Joined Google DeepMind as a PhD Student Researcher working
+              with the Gemma post-training team.
+            </li>
+            <li>
               <span class="date">Apr 2025</span> Presented
               <a href="https://openreview.net/pdf?id=kRoWeLTpL4" target="_blank" rel="noreferrer">
                 Copyright-Protected Language Generation via Adaptive Model Fusion
@@ -379,15 +414,11 @@
               as an oral at ICLR 2025 in Singapore.
             </li>
             <li>
-              <span class="date">Sep 2024</span> Joined Google DeepMind as a PhD Student Researcher working
-              with the Gemma post-training team.
-            </li>
-            <li>
-              <span class="date">Mar 2024</span> Started working at Apple on image and video generation for
+              <span class="date">Mar 2025</span> Started working at Apple on image and video generation for
               Apple Intelligence.
             </li>
             <li>
-              <span class="date">Oct 2023</span> Visited the Simons Institute at UC Berkeley during my PhD.
+              <span class="date">Oct 2024</span> Visited the Simons Institute at UC Berkeley during my PhD.
             </li>
             <li>
               <span class="date">Dec 2022</span> Started my PhD at the ETH AI Center.
@@ -397,11 +428,7 @@
 
         <section id="contact">
           <h2>contact</h2>
-          <p>
-            The easiest way to reach me is by
-            <a href="mailto:javier.abadmartinez@ai.ethz.ch">email</a>. I am always happy to hear about
-            research, student projects, and collaboration opportunities.
-          </p>
+          <p><a href="mailto:javier.abadmartinez@ai.ethz.ch">javier.abadmartinez@ai.ethz.ch</a></p>
         </section>
       </main>
 
