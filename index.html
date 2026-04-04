@@ -23,17 +23,17 @@ image: /artifacts/portrait.jpeg
       <div class="about-grid">
         <div>
           <p>
-            I am a Doctoral Student in Machine Learning and a Fellow at the ETH AI Center, advised by
+            I am a doctoral student in machine learning and a fellow at the ETH AI Center, advised by
             <a href="https://sml.inf.ethz.ch/group/fannyy/" target="_blank" rel="noreferrer">Fanny Yang</a>.
           </p>
           <p>
             I work on alignment and safety for language models, privacy-preserving machine learning,
-            and causal inference. During my PhD, I have spent time at
+            and causal inference. During my PhD, I have worked with
             <a href="https://www.apple.com/" target="_blank" rel="noreferrer">Apple</a> and
             <a href="https://deepmind.google/" target="_blank" rel="noreferrer">Google DeepMind</a>.
-            Before ETH, I was a Research Scientist at
+            Before ETH, I was a research scientist at
             <a href="https://www.featurespace.com/" target="_blank" rel="noreferrer">Featurespace</a> and conducted research at Cambridge
-            on conformal prediction under the guidance of
+            on conformal prediction with
             <a href="https://www.ai.cam.ac.uk/people/adrian-weller/" target="_blank" rel="noreferrer">Adrian Weller MBE</a>
             and on interpretability methods for causal inference with
             <a href="https://www.cmih.maths.cam.ac.uk/staff/mihaela-van-der-schaar" target="_blank" rel="noreferrer">Mihaela van der Schaar</a>.
@@ -56,15 +56,13 @@ image: /artifacts/portrait.jpeg
           rel="noreferrer"
         >Google Scholar</a>.
       </p>
+      <p class="section-footnote">* equal contribution</p>
       <ul class="paper-list">
         {% assign featured_papers = site.data.papers | where: "featured", true %}
         {% for paper in featured_papers %}
           <li>
             <div class="paper-title">{{ paper.title }}</div>
             <div class="paper-meta">{{ paper.authors }}. {{ paper.venue }} {{ paper.year }}.</div>
-            {% if paper.note %}
-              <div class="paper-note">{{ paper.note }}</div>
-            {% endif %}
             {% if paper.links %}
               <div class="paper-links">
                 {% for link in paper.links %}
@@ -120,5 +118,5 @@ image: /artifacts/portrait.jpeg
     </section>
   </main>
 
-  <footer class="footer">© 2026 {{ site.author.name }}</footer>
+  <footer class="footer">© 2026 {{ site.author.name }}. All rights reserved.</footer>
 </div>

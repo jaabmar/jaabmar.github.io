@@ -189,7 +189,14 @@ p {
 .section-note {
   color: var(--muted);
   font-size: 1rem;
-  margin-bottom: 22px;
+  margin-bottom: 6px;
+}
+
+.section-footnote {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-style: italic;
 }
 
 .news-list,
@@ -219,14 +226,12 @@ p {
 }
 
 .paper-meta,
-.paper-links,
-.paper-note {
+.paper-links {
   color: var(--muted);
   font-size: 0.98rem;
 }
 
-.paper-links,
-.paper-note {
+.paper-links {
   margin-top: 3px;
 }
 
@@ -269,10 +274,6 @@ p {
   text-decoration: none;
 }
 
-.paper-note {
-  font-style: italic;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -294,6 +295,7 @@ p {
   padding-top: 24px;
   color: var(--muted);
   font-size: 0.9rem;
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 680px) {
