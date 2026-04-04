@@ -90,6 +90,22 @@ h1 {
   line-height: 1.45;
 }
 
+.header-email {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.header-email a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.header-email a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
 .nav {
   display: flex;
   gap: 18px;

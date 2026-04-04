@@ -1,4 +1,4 @@
-- title: "Sparse Autoencoders are Capable LLM Jailbreak Mitigators"
+- title: "Sparse autoencoders are capable LLM jailbreak mitigators"
   authors: Y Assogba, J Cortellazzi, J Abad, P Rodriguez, X Suau, and A Blaas
   venue: arXiv preprint arXiv:2602.12418
   year: 2026
@@ -27,7 +27,7 @@
     - label: paper
       url: https://arxiv.org/abs/2503.14459
 
-- title: "Copyright-Protected Language Generation via Adaptive Model Fusion"
+- title: "Copyright-protected language generation via adaptive model fusion"
   authors: J Abad, K Donhauser, F Pinto, and F Yang
   venue: Oral @ ICLR
   year: 2025
@@ -61,7 +61,7 @@
     - label: code
       url: https://github.com/jaabmar/private-pgd
 
-- title: "Hidden yet quantifiable: A lower bound for confounding strength using randomized trials"
+- title: "Hidden yet quantifiable: a lower bound for confounding strength using randomized trials"
   authors: P De Bartolomeis*, J Abad*, K Donhauser, and F Yang
   venue: AISTATS
   year: 2024

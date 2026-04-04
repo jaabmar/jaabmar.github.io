@@ -9,6 +9,7 @@ image: /artifacts/social-preview.png
     <div class="brand">
       <h1><a class="brand-link" href="{{ '/' | relative_url }}">{{ site.author.name }}</a></h1>
       <p class="subtitle">Language Model Alignment and Safety</p>
+      <p class="header-email"><span id="email-link"></span></p>
     </div>
     <nav class="nav" aria-label="Primary">
       <a href="#about">about</a>
@@ -32,9 +33,9 @@ image: /artifacts/social-preview.png
             and at Google DeepMind working on language model post-training and distillation.
             Before my PhD, I was a Research Scientist at Featurespace.
             I also conducted research at the University of Cambridge on conformal prediction with
-            <a href="https://www.ai.cam.ac.uk/people/adrian-weller/" target="_blank" rel="noreferrer">Adrian Weller MBE</a>
+            <a href="https://mlg.eng.cam.ac.uk/adrian/" target="_blank" rel="noreferrer">Adrian Weller MBE</a>
             and on interpretability methods for causal inference with
-            <a href="https://www.cmih.maths.cam.ac.uk/staff/mihaela-van-der-schaar" target="_blank" rel="noreferrer">Mihaela van der Schaar</a>.
+            <a href="https://www.vanderschaar-lab.com/prof-mihaela-van-der-schaar/" target="_blank" rel="noreferrer">Mihaela van der Schaar</a>.
           </p>
           {% include social-icons.html %}
         </div>
@@ -123,3 +124,22 @@ image: /artifacts/social-preview.png
 
   <footer class="footer">© 2026 {{ site.author.name }}. All rights reserved.</footer>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var codes = [
+      106, 97, 118, 105, 101, 114, 46, 97, 98, 97, 100, 109, 97, 114, 116, 105, 110, 101, 122,
+      64, 97, 105, 46, 101, 116, 104, 122, 46, 99, 104
+    ];
+    var email = String.fromCharCode.apply(null, codes);
+    var slot = document.getElementById("email-link");
+
+    if (!slot) {
+      return;
+    }
+
+    var link = document.createElement("a");
+    link.href = "mailto:" + email;
+    link.textContent = email;
+    slot.appendChild(link);
+  });
+</script>
