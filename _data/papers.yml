@@ -38,6 +38,8 @@
       url: https://arxiv.org/abs/2412.06619
     - label: code
       url: https://github.com/jaabmar/cp_fuse
+    - label: talk
+      url: https://iclr.cc/virtual/2025/oral/31785
 
 - title: "Detecting critical treatment effect bias in small subgroups"
   authors: P De Bartolomeis, J Abad, K Donhauser, and F Yang
