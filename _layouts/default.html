@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="{{ site.author.full_name }}" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style" />
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
@@ -11,55 +10,37 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "{{ site.url }}/#website",
-            "url": "{{ site.url }}/",
-            "name": "{{ site.title }}",
-            "description": {{ site.description | jsonify }},
-            "inLanguage": "{{ site.lang | default: 'en' }}",
-            "about": {
-              "@id": "{{ site.url }}/#person"
-            }
-          },
-          {
-            "@type": "Person",
-            "@id": "{{ site.url }}/#person",
-            "name": "{{ site.author.name }}",
-            "alternateName": [
-              "{{ site.author.full_name }}"
-            ],
-            "url": "{{ site.url }}/",
-            "image": "{{ site.url }}/artifacts/portrait.jpeg",
-            "description": {{ site.description | jsonify }},
-            "jobTitle": "PhD Student at ETH AI Center",
-            "affiliation": {
-              "@type": "Organization",
-              "name": "ETH AI Center"
-            },
-            "worksFor": {
-              "@type": "Organization",
-              "name": "ETH AI Center"
-            },
-            "email": "mailto:{{ site.author.email }}",
-            "knowsAbout": [
-              "Machine learning",
-              "AI safety",
-              "Foundation models",
-              "Privacy-preserving machine learning",
-              "Causal inference"
-            ],
-            "mainEntityOfPage": {
-              "@id": "{{ site.url }}/#website"
-            },
-            "sameAs": [
-              "https://www.linkedin.com/in/{{ site.linkedin_username }}/",
-              "https://scholar.google.es/citations?user={{ site.scholar_userid }}&hl=es",
-              "https://twitter.com/{{ site.twitter_username }}",
-              "https://github.com/{{ site.github_username }}"
-            ]
-          }
+        "@type": "Person",
+        "@id": "{{ site.url }}/#person",
+        "name": "{{ site.author.name }}",
+        "alternateName": [
+          "{{ site.author.full_name }}"
+        ],
+        "url": "{{ site.url }}/",
+        "image": "{{ site.url }}/artifacts/portrait.jpeg",
+        "description": {{ site.description | jsonify }},
+        "jobTitle": "PhD Student at ETH AI Center",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "ETH AI Center"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "ETH AI Center"
+        },
+        "email": "mailto:{{ site.author.email }}",
+        "knowsAbout": [
+          "Machine learning",
+          "AI safety",
+          "Foundation models",
+          "Privacy-preserving machine learning",
+          "Causal inference"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/{{ site.linkedin_username }}/",
+          "https://scholar.google.es/citations?user={{ site.scholar_userid }}&hl=es",
+          "https://twitter.com/{{ site.twitter_username }}",
+          "https://github.com/{{ site.github_username }}"
         ]
       }
     </script>
