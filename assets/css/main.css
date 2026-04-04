@@ -113,7 +113,7 @@ main {
 }
 
 section {
-  padding: 30px 0 34px;
+  padding: 34px 0 38px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -122,12 +122,14 @@ section:last-of-type {
 }
 
 h2 {
-  margin: 0 0 18px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  margin: 0 0 20px;
+  font-family: var(--display-font);
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  font-optical-sizing: auto;
 }
 
 p {
@@ -186,8 +188,8 @@ p {
 
 .section-note {
   color: var(--muted);
-  font-size: 0.98rem;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  margin-bottom: 22px;
 }
 
 .news-list,
@@ -229,17 +231,29 @@ p {
 }
 
 .paper-links {
-  display: flex;
-  gap: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
   flex-wrap: wrap;
 }
 
 .paper-links a {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+.paper-link-sep {
+  margin: 0 8px;
+  color: #a49b91;
 }
 
 .paper-links a:hover {
-  text-decoration: underline;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .paper-note {
@@ -285,5 +299,9 @@ p {
 
   .nav {
     font-size: 0.76rem;
+  }
+
+  h2 {
+    font-size: clamp(1.45rem, 8vw, 1.9rem);
   }
 }
