@@ -255,6 +255,27 @@ p {
   margin-top: 2px;
 }
 
+.paper-author-self {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.paper-note-mark {
+  color: var(--link);
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.paper-note-mark:not(.paper-note-mark-key) {
+  margin-left: 0.08em;
+}
+
+.paper-note-mark-key {
+  margin-right: 0.2em;
+}
+
 .paper-meta {
   display: flex;
   align-items: center;

@@ -24,7 +24,8 @@ image: /artifacts/social-preview.png
       <div class="about-grid">
         <div>
           <p>
-            I am a Doctoral Student in Machine Learning and a Fellow at the ETH AI Center, advised by
+            I am a Doctoral Student in Machine Learning and a Fellow at the
+            <a href="https://ai.ethz.ch/" target="_blank" rel="noreferrer">ETH AI Center</a>, advised by
             <a href="https://sml.inf.ethz.ch/group/fannyy/" target="_blank" rel="noreferrer">Fanny Yang</a>.
           </p>
           <p>
@@ -56,18 +57,22 @@ image: /artifacts/social-preview.png
           rel="noreferrer"
         >Google Scholar</a>.
       </p>
-      <p class="section-footnote">* equal contribution</p>
+      <p class="section-footnote"><sup class="paper-note-mark paper-note-mark-key">*</sup> equal contribution</p>
       <ul class="paper-list">
         {% assign featured_papers = site.data.papers | where: "featured", true %}
         {% for paper in featured_papers %}
           <li>
+            {% assign paper_authors = paper.authors
+              | replace: 'Javier Abad', '<span class="paper-author-self">Javier Abad</span>'
+              | replace: '*', '<sup class="paper-note-mark" title="equal contribution">*</sup>'
+            %}
             <div class="paper-heading">
               <div class="paper-title">{{ paper.title }}</div>
               {% if paper.presentation %}
                 <span class="paper-badge">{{ paper.presentation }}</span>
               {% endif %}
             </div>
-            <div class="paper-authors">{{ paper.authors }}.</div>
+            <div class="paper-authors">{{ paper_authors }}.</div>
             <div class="paper-meta">
               <span class="paper-venue">{{ paper.venue }}</span>
               <span class="paper-year">{{ paper.year }}</span>
@@ -131,24 +136,5 @@ image: /artifacts/social-preview.png
     </section>
   </main>
 
-  <footer class="footer">© 2026 {{ site.author.name }}. All rights reserved.</footer>
+  <footer class="footer">© {{ site.time | date: "%Y" }} {{ site.author.name }}. All rights reserved.</footer>
 </div>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var codes = [
-      106, 97, 118, 105, 101, 114, 46, 97, 98, 97, 100, 109, 97, 114, 116, 105, 110, 101, 122,
-      64, 97, 105, 46, 101, 116, 104, 122, 46, 99, 104
-    ];
-    var email = String.fromCharCode.apply(null, codes);
-    var slot = document.getElementById("email-link");
-
-    if (!slot) {
-      return;
-    }
-
-    var link = document.createElement("a");
-    link.href = "mailto:" + email;
-    link.textContent = email;
-    slot.appendChild(link);
-  });
-</script>
