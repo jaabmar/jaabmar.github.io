@@ -244,11 +244,53 @@ p {
   white-space: nowrap;
 }
 
-.paper-meta,
+.paper-authors,
 .paper-links {
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.55;
+}
+
+.paper-authors {
+  margin-top: 2px;
+}
+
+.paper-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 9px;
+}
+
+.paper-venue,
+.paper-year {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+.paper-venue {
+  padding: 0.34rem 0.82rem;
+  background: rgba(33, 78, 139, 0.08);
+  border: 1px solid rgba(33, 78, 139, 0.14);
+  color: var(--link);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.paper-year {
+  padding: 0.34rem 0.7rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .paper-links {
@@ -354,5 +396,14 @@ p {
 
   .paper-title {
     font-size: 1.16rem;
+  }
+
+  .paper-meta {
+    gap: 8px;
+  }
+
+  .paper-venue,
+  .paper-year {
+    min-height: 30px;
   }
 }

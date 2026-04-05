@@ -67,7 +67,11 @@ image: /artifacts/social-preview.png
                 <span class="paper-badge">{{ paper.presentation }}</span>
               {% endif %}
             </div>
-            <div class="paper-meta">{{ paper.authors }}. {{ paper.venue }} {{ paper.year }}.</div>
+            <div class="paper-authors">{{ paper.authors }}.</div>
+            <div class="paper-meta">
+              <span class="paper-venue">{{ paper.venue }}</span>
+              <span class="paper-year">{{ paper.year }}</span>
+            </div>
             {% if paper.links %}
               <div class="paper-links">
                 {% for link in paper.links %}

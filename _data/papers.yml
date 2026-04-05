@@ -1,5 +1,5 @@
 - title: "Sparse autoencoders are capable LLM jailbreak mitigators"
-  authors: Y Assogba, J Cortellazzi, J Abad, P Rodriguez, X Suau, and A Blaas
+  authors: Yannick Assogba, Jacopo Cortellazzi, Javier Abad, Pau Rodriguez, Xavier Suau, and Arno Blaas
   venue: arXiv preprint arXiv:2602.12418
   year: 2026
   featured: false
@@ -8,8 +8,8 @@
       url: https://arxiv.org/abs/2602.12418
 
 - title: "Efficient randomized experiments using foundation models"
-  authors: P De Bartolomeis, J Abad, G Wang, K Donhauser, R M Duch, F Yang, and I J Dahabreh
-  venue: NeurIPS
+  authors: Piersilvio De Bartolomeis, Javier Abad, Guanbo Wang, Konstantin Donhauser, Raymond M. Duch, Fanny Yang, and Issa J. Dahabreh
+  venue: Advances in Neural Information Processing Systems (NeurIPS)
   year: 2025
   featured: true
   links:
@@ -19,8 +19,8 @@
       url: https://github.com/jaabmar/HAIPW
 
 - title: "Doubly robust identification of treatment effects from multiple environments"
-  authors: P De Bartolomeis, J Kostin, J Abad, Y Wang, and F Yang
-  venue: ICLR
+  authors: Piersilvio De Bartolomeis, Julia Kostin, Javier Abad, Yixin Wang, and Fanny Yang
+  venue: International Conference on Learning Representations (ICLR)
   year: 2025
   featured: false
   links:
@@ -28,8 +28,8 @@
       url: https://arxiv.org/abs/2503.14459
 
 - title: "Copyright-protected language generation via adaptive model fusion"
-  authors: J Abad, K Donhauser, F Pinto, and F Yang
-  venue: Oral @ ICLR
+  authors: Javier Abad, Konstantin Donhauser, Francesco Pinto, and Fanny Yang
+  venue: International Conference on Learning Representations (ICLR)
   year: 2025
   featured: true
   presentation: oral
@@ -42,8 +42,8 @@
       url: https://iclr.cc/virtual/2025/oral/31785
 
 - title: "Detecting critical treatment effect bias in small subgroups"
-  authors: P De Bartolomeis, J Abad, K Donhauser, and F Yang
-  venue: UAI
+  authors: Piersilvio De Bartolomeis, Javier Abad, Konstantin Donhauser, and Fanny Yang
+  venue: Conference on Uncertainty in Artificial Intelligence (UAI)
   year: 2024
   featured: true
   links:
@@ -53,8 +53,8 @@
       url: https://github.com/jaabmar/kernel-test-bias
 
 - title: "Privacy-preserving data release leveraging optimal transport and particle gradient descent"
-  authors: K Donhauser*, J Abad*, N Hulkund, and F Yang
-  venue: ICML
+  authors: Konstantin Donhauser*, Javier Abad*, Neha Hulkund, and Fanny Yang
+  venue: International Conference on Machine Learning (ICML)
   year: 2024
   featured: true
   links:
@@ -64,8 +64,8 @@
       url: https://github.com/jaabmar/private-pgd
 
 - title: "Hidden yet quantifiable: a lower bound for confounding strength using randomized trials"
-  authors: P De Bartolomeis*, J Abad*, K Donhauser, and F Yang
-  venue: AISTATS
+  authors: Piersilvio De Bartolomeis*, Javier Abad*, Konstantin Donhauser, and Fanny Yang
+  venue: International Conference on Artificial Intelligence and Statistics (AISTATS)
   year: 2024
   featured: true
   links:
@@ -75,8 +75,8 @@
       url: https://github.com/jaabmar/confounder-lower-bound
 
 - title: "Approximating full conformal prediction at scale via influence functions"
-  authors: J Abad, U Bhatt, A Weller, and G Cherubin
-  venue: Oral @ AAAI
+  authors: Javier Abad, Umang Bhatt, Adrian Weller, and Giovanni Cherubin
+  venue: AAAI Conference on Artificial Intelligence
   year: 2023
   featured: true
   presentation: oral
