@@ -400,6 +400,7 @@ p {
   }
 
   .portrait {
+    order: -1;
     width: 124px;
   }
 
