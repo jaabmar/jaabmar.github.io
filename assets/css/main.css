@@ -229,6 +229,16 @@ p {
   letter-spacing: -0.02em;
 }
 
+a.paper-title {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a.paper-title:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
 .paper-badge {
   display: inline-flex;
   align-items: center;

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Javier Abad
-description: Javier Abad Martinez, who publishes as Javier Abad, is a PhD student at the ETH AI Center working on language model safety, privacy-preserving machine learning, and trustworthy machine learning more broadly.
+description: Javier Abad is a PhD student at the ETH AI Center working on language model safety, privacy-preserving machine learning, and trustworthy AI.
 image: /artifacts/social-preview.png
 ---
 <div class="page">
@@ -42,7 +42,7 @@ image: /artifacts/social-preview.png
           {% include social-icons.html %}
         </div>
         <div class="portrait">
-          <img src="{{ '/artifacts/portrait.jpeg' | relative_url }}" alt="Portrait of Javier Abad" />
+          <img src="{{ '/artifacts/portrait.jpeg' | relative_url }}" alt="Javier Abad, PhD student at the ETH AI Center" />
         </div>
       </div>
     </section>
@@ -66,8 +66,20 @@ image: /artifacts/social-preview.png
               | replace: 'Javier Abad', '<span class="paper-author-self">Javier Abad</span>'
               | replace: '*', '<sup class="paper-note-mark" title="equal contribution">*</sup>'
             %}
+            {% assign paper_url = nil %}
+            {% if paper.links %}
+              {% for link in paper.links %}
+                {% if link.label == "paper" %}
+                  {% assign paper_url = link.url %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
             <div class="paper-heading">
-              <div class="paper-title">{{ paper.title }}</div>
+              {% if paper_url %}
+                <a class="paper-title" href="{{ paper_url }}" target="_blank" rel="noreferrer">{{ paper.title }}</a>
+              {% else %}
+                <div class="paper-title">{{ paper.title }}</div>
+              {% endif %}
               {% if paper.presentation %}
                 <span class="paper-badge">{{ paper.presentation }}</span>
               {% endif %}
