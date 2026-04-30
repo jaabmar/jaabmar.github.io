@@ -97,6 +97,23 @@ h1 {
   text-decoration: none;
 }
 
+.nav a.nav-cv {
+  position: relative;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.nav a.nav-cv::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
 .nav a:hover {
   color: var(--text);
   text-decoration: none;
