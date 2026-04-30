@@ -1,0 +1,109 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.18in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{array}
+\usepackage{titlesec}
+
+\pagestyle{empty}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\titleformat{\section}{\fontsize{14.0}{14.0}\selectfont\bfseries\scshape}{}{0pt}{}[\vspace{-1pt}\titlerule]
+\titlespacing*{\section}{0pt}{4pt}{2.2pt}
+
+\newcommand{\role}[4]{%
+  \begin{tabular*}{\textwidth}{@{}p{0.76\textwidth}@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4}
+  \end{tabular*}\par\vspace{0pt}
+}
+
+\newcommand{\detail}[1]{%
+  {\small #1}\par\vspace{0pt}
+}
+
+\newcommand{\paper}[2]{%
+  \begin{tabular*}{\textwidth}{@{}p{0.82\textwidth}@{\extracolsep{\fill}}r@{}}
+    #1 & \textit{#2}
+  \end{tabular*}\par\vspace{0pt}
+}
+
+\newcommand{\event}[3]{%
+  \begin{tabular*}{\textwidth}{@{}p{0.25\textwidth}@{\extracolsep{\fill}}p{0.50\textwidth}@{\extracolsep{\fill}}>{\raggedleft\arraybackslash}p{0.20\textwidth}@{}}
+    \textbf{#1} & #2 & \textit{#3}
+  \end{tabular*}\par\vspace{0pt}
+}
+
+\newcommand{\plainrow}[2]{%
+  \textbf{#1:} #2\par\vspace{0pt}
+}
+
+\newcommand{\award}[2]{%
+  \begin{tabular*}{\textwidth}{@{}p{0.86\textwidth}@{\extracolsep{\fill}}r@{}}
+    #1 & #2
+  \end{tabular*}\par\vspace{0pt}
+}
+
+\begin{document}
+\fontsize{13.2}{13.6}\selectfont
+
+\begin{center}
+  {\fontsize{17.0}{17.2}\selectfont\textbf{Javier Abad Martínez}}\\[1pt]
+  PhD Student in Machine Learning, ETH AI Center\\[-1pt]
+  \href{mailto:javier.abadmartinez@ai.ethz.ch}{javier.abadmartinez@ai.ethz.ch}
+  \quad \href{https://jaabmar.github.io}{jaabmar.github.io}
+  \quad \href{https://scholar.google.es/citations?user=gGHkUhkAAAAJ&hl=es}{Google Scholar}
+  \quad \href{https://github.com/jaabmar}{GitHub}
+  \quad \href{https://www.linkedin.com/in/javiabadm/}{LinkedIn}
+\end{center}
+\vspace{-8pt}
+
+\section*{Research Interests}
+Language model safety and alignment; privacy-preserving machine learning; causal inference.
+
+\section*{Education}
+\role{ETH Zurich}{Dec. 2022 -- Jul. 2026}{PhD in Machine Learning; advisor: Prof. \href{https://sml.inf.ethz.ch/group/fannyy/}{Fanny Yang}}{Zurich, Switzerland}
+\detail{ETH AI Center Doctoral Fellow; Simons Institute (UC Berkeley), Fall 2024; \href{https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai}{GPAI Code of Practice expert group}.}
+\role{University of Cambridge}{Oct. 2020 -- Aug. 2021}{MPhil in Machine Learning and Machine Intelligence, Distinction}{Cambridge, UK}
+\role{Universidad Politécnica de Valencia}{Sep. 2015 -- Jul. 2020}{BSc Telecommunications Engineering; BSc Business Administration}{Valencia, Spain}
+\detail{GPA: 96\% / 95\%; Best Student in Telecommunications and Business; Georgia Tech exchange, GPA 4.0/4.0.}
+
+\section*{Research Experience}
+\role{Google DeepMind}{Oct. 2025 -- Dec. 2025}{PhD Student Researcher, Gemma Post-training Team}{Zurich, Switzerland}
+\role{Apple}{Mar. 2025 -- Oct. 2025}{Machine Learning Researcher, Visual Generation \& AI Safety}{Cupertino, CA / Zurich}
+\role{Featurespace}{Mar. 2022 -- Nov. 2022}{Research Scientist}{London, UK}
+\role{University of Cambridge}{Oct. 2021 -- Feb. 2022}{Research Assistant, Computational \& Biological Learning Lab with \href{https://mlg.eng.cam.ac.uk/adrian/}{Adrian Weller MBE}}{Cambridge, UK}
+\role{University of Cambridge}{Apr. 2021 -- Aug. 2021}{Research Assistant, Van der Schaar Lab with Prof. \href{https://www.vanderschaar-lab.com/prof-mihaela-van-der-schaar/}{Mihaela van der Schaar}}{Cambridge, UK}
+\role{Universidad Politécnica de Valencia}{Nov. 2019 -- Jul. 2020}{Research Assistant, Computer Vision \& Behavior Analysis Lab}{Valencia, Spain}
+
+\section*{Selected Publications}
+\paper{\href{https://arxiv.org/abs/2502.04262}{Efficient Randomized Experiments Using Foundation Models}}{NeurIPS 2025}
+\paper{\href{https://arxiv.org/abs/2412.06619}{Copyright-Protected Language Generation via Adaptive Model Fusion}}{ICLR 2025, Oral}
+\paper{\href{https://arxiv.org/abs/2401.17823}{Privacy-Preserving Data Release via Optimal Transport and Particle Gradient Descent}}{ICML 2024}
+\paper{\href{https://arxiv.org/abs/2404.18905}{Detecting Critical Treatment Effect Bias in Small Subgroups}}{UAI 2024}
+\paper{\href{https://arxiv.org/abs/2312.03871}{Hidden Yet Quantifiable: Lower Bounds for Confounding Strength}}{AISTATS 2024}
+\paper{\href{https://arxiv.org/abs/2202.01315}{Approximating Full Conformal Prediction at Scale via Influence Functions}}{AAAI 2023, Oral}
+
+\section*{Selected Talks}
+\event{Google DeepMind}{Inference-time compute for student-teacher distillation}{Zurich, 2025}
+\event{Apple}{Pre-training visual generation models}{Zurich, 2025}
+\event{ICLR 2025}{Adaptive model fusion for copyright protection}{Singapore, 2025}
+\event{Hasler Foundation}{Reliable inference from observational data}{Bern, 2024}
+\event{ETH AI Center}{Lower bounds for hidden confounding strength}{Zurich, 2024}
+\event{AAAI 2023}{Scaling conformal prediction with influence functions}{Washington DC, 2023}
+
+\section*{Selected Awards}
+\award{Excellence Fellowship in the Valencian Community}{2023}
+\award{ETH AI Center Doctoral Fellowship}{2022}
+\award{``La Caixa'' Excellence Fellowship (declined)}{2021}
+\award{Best Student, Faculty of Telecommunications and Faculty of Business}{2021}
+\award{First place, Spanish national ranking of Telecommunications Engineering students}{2021}
+
+\section*{Skills and Languages}
+\plainrow{Technical}{Python, PyTorch, JAX, TensorFlow, Triton, MATLAB.}
+\plainrow{Languages}{Spanish and Catalan (native); English (fluent, C2); German (B1).}
+
+\end{document}
