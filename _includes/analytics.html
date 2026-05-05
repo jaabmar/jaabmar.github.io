@@ -1,0 +1,272 @@
+{% if jekyll.environment == "production" and site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "{{ site.google_analytics }}");
+
+    (function () {
+      var scrollThresholds = [25, 50, 75, 90, 100];
+      var sentScrollDepths = {};
+      var sentSections = {};
+
+      function cleanText(value) {
+        return (value || "").replace(/\s+/g, " ").trim().slice(0, 140);
+      }
+
+      function closest(element, selector) {
+        if (!element || !element.closest) {
+          return null;
+        }
+
+        return element.closest(selector);
+      }
+
+      function hostFromUrl(url) {
+        try {
+          return new URL(url, window.location.href).hostname.replace(/^www\./, "");
+        } catch (error) {
+          return "";
+        }
+      }
+
+      function sectionName(element) {
+        var section = closest(element, "section");
+        return section ? section.id || "unknown" : "top";
+      }
+
+      function linkLabel(link) {
+        return cleanText(link.getAttribute("aria-label") || link.getAttribute("title") || link.textContent);
+      }
+
+      function profileName(href) {
+        var domain = hostFromUrl(href);
+
+        if (domain.indexOf("linkedin.com") !== -1) {
+          return "linkedin";
+        }
+
+        if (domain.indexOf("scholar.google") !== -1) {
+          return "google_scholar";
+        }
+
+        if (domain.indexOf("twitter.com") !== -1 || domain.indexOf("x.com") !== -1) {
+          return "x";
+        }
+
+        if (domain.indexOf("github.com") !== -1) {
+          return "github";
+        }
+
+        return "";
+      }
+
+      function paperData(link) {
+        var item = closest(link, ".paper-list li");
+        var title = item ? item.querySelector(".paper-title") : null;
+        var venue = item ? item.querySelector(".paper-venue") : null;
+        var year = item ? item.querySelector(".paper-year") : null;
+
+        return {
+          paper_title: title ? cleanText(title.textContent) : "",
+          paper_venue: venue ? cleanText(venue.textContent) : "",
+          paper_year: year ? cleanText(year.textContent) : ""
+        };
+      }
+
+      function eventParams(link, category) {
+        return {
+          link_url: link.href,
+          link_text: linkLabel(link),
+          link_domain: hostFromUrl(link.href),
+          link_category: category,
+          link_location: sectionName(link),
+          page_path: window.location.pathname,
+          transport_type: "beacon"
+        };
+      }
+
+      function sendEvent(name, params) {
+        if (typeof gtag !== "function") {
+          return;
+        }
+
+        gtag("event", name, params || {});
+      }
+
+      function sendUtmLanding() {
+        var params = new URLSearchParams(window.location.search);
+        var hasUtm = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].some(function (key) {
+          return params.has(key);
+        });
+
+        if (!hasUtm) {
+          return;
+        }
+
+        sendEvent("utm_landing", {
+          utm_source: params.get("utm_source") || "",
+          utm_medium: params.get("utm_medium") || "",
+          utm_campaign: params.get("utm_campaign") || "",
+          utm_content: params.get("utm_content") || "",
+          utm_term: params.get("utm_term") || "",
+          landing_path: window.location.pathname,
+          landing_url: window.location.href,
+          referrer_domain: document.referrer ? hostFromUrl(document.referrer) : "",
+          transport_type: "beacon"
+        });
+      }
+
+      function trackClick(event) {
+        var link = closest(event.target, "a");
+
+        if (!link) {
+          return;
+        }
+
+        var href = link.getAttribute("href") || "";
+        var label = linkLabel(link);
+        var labelLower = label.toLowerCase();
+        var profile = profileName(link.href);
+        var params;
+
+        if (href === "#top") {
+          params = eventParams(link, "navigation");
+          params.target_section = "top";
+          sendEvent("home_click", params);
+          return;
+        }
+
+        if (href.indexOf("#") === 0) {
+          params = eventParams(link, "navigation");
+          params.target_section = href.slice(1);
+          sendEvent("nav_click", params);
+          return;
+        }
+
+        if (href.indexOf("mailto:") === 0) {
+          params = eventParams(link, "contact");
+          params.contact_method = "email";
+          sendEvent("email_click", params);
+          return;
+        }
+
+        if (href.indexOf("/assets/cv.pdf") !== -1 || href.indexOf("assets/cv.pdf") !== -1) {
+          params = eventParams(link, "cv");
+          sendEvent("cv_click", params);
+          return;
+        }
+
+        if (closest(link, ".paper-list li")) {
+          params = eventParams(link, "research");
+          Object.assign(params, paperData(link));
+
+          if (link.classList.contains("paper-title") || labelLower === "paper") {
+            params.research_link_type = "paper";
+            sendEvent("paper_click", params);
+          } else if (labelLower === "code") {
+            params.research_link_type = "code";
+            sendEvent("code_click", params);
+          } else if (labelLower === "talk") {
+            params.research_link_type = "talk";
+            sendEvent("talk_click", params);
+          } else {
+            params.research_link_type = labelLower || "other";
+            sendEvent("research_link_click", params);
+          }
+
+          return;
+        }
+
+        if (profile) {
+          params = eventParams(link, "profile");
+          params.profile_name = profile;
+          sendEvent("profile_click", params);
+          return;
+        }
+
+        if (closest(link, ".news-list li")) {
+          params = eventParams(link, "news");
+          params.news_item = cleanText(closest(link, ".news-list li").textContent);
+          sendEvent("news_link_click", params);
+          return;
+        }
+
+        if (/^https?:\/\//.test(href)) {
+          params = eventParams(link, sectionName(link) === "about" ? "about" : "external");
+          sendEvent(sectionName(link) === "about" ? "about_link_click" : "external_link_click", params);
+          return;
+        }
+
+        params = eventParams(link, "internal");
+        sendEvent("site_link_click", params);
+      }
+
+      function trackScrollDepth() {
+        var pageHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+        var viewportBottom = window.scrollY + window.innerHeight;
+        var depth = Math.min(100, Math.round((viewportBottom / pageHeight) * 100));
+
+        scrollThresholds.forEach(function (threshold) {
+          if (depth >= threshold && !sentScrollDepths[threshold]) {
+            sentScrollDepths[threshold] = true;
+            sendEvent("scroll_depth", {
+              scroll_percent: threshold,
+              page_path: window.location.pathname,
+              transport_type: "beacon"
+            });
+          }
+        });
+      }
+
+      function trackSectionViews() {
+        if (!("IntersectionObserver" in window)) {
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var id = entry.target.id || "unknown";
+
+            if (entry.isIntersecting && !sentSections[id]) {
+              sentSections[id] = true;
+              sendEvent("section_view", {
+                section_id: id,
+                section_title: cleanText(entry.target.querySelector("h2") ? entry.target.querySelector("h2").textContent : id),
+                page_path: window.location.pathname,
+                transport_type: "beacon"
+              });
+            }
+          });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll("main section[id]").forEach(function (section) {
+          observer.observe(section);
+        });
+      }
+
+      function initAnalyticsEvents() {
+        sendUtmLanding();
+        trackSectionViews();
+        trackScrollDepth();
+
+        document.addEventListener("click", trackClick);
+        window.addEventListener("scroll", trackScrollDepth, { passive: true });
+        window.addEventListener("resize", trackScrollDepth);
+        window.addEventListener("load", trackScrollDepth);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initAnalyticsEvents, { once: true });
+      } else {
+        initAnalyticsEvents();
+      }
+    })();
+  </script>
+{% endif %}
