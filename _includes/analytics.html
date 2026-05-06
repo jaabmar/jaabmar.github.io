@@ -4,13 +4,33 @@
       var analyticsOptOutKey = "jaabmar_analytics_opt_out";
       var analyticsSetting = new URLSearchParams(window.location.search).get("analytics");
 
-      if (analyticsSetting === "off") {
-        window.localStorage.setItem(analyticsOptOutKey, "true");
-      } else if (analyticsSetting === "on") {
-        window.localStorage.removeItem(analyticsOptOutKey);
+      function setAnalyticsOptOut(value) {
+        try {
+          if (value) {
+            window.localStorage.setItem(analyticsOptOutKey, "true");
+          } else {
+            window.localStorage.removeItem(analyticsOptOutKey);
+          }
+        } catch (error) {
+          return;
+        }
       }
 
-      if (window.localStorage.getItem(analyticsOptOutKey) === "true") {
+      function hasAnalyticsOptOut() {
+        try {
+          return window.localStorage.getItem(analyticsOptOutKey) === "true";
+        } catch (error) {
+          return false;
+        }
+      }
+
+      if (analyticsSetting === "off") {
+        setAnalyticsOptOut(true);
+      } else if (analyticsSetting === "on") {
+        setAnalyticsOptOut(false);
+      }
+
+      if (hasAnalyticsOptOut()) {
         return;
       }
 
