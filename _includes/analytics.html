@@ -1,12 +1,29 @@
 {% if jekyll.environment == "production" and site.google_analytics %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "{{ site.google_analytics }}");
-
     (function () {
+      var analyticsOptOutKey = "jaabmar_analytics_opt_out";
+      var analyticsSetting = new URLSearchParams(window.location.search).get("analytics");
+
+      if (analyticsSetting === "off") {
+        window.localStorage.setItem(analyticsOptOutKey, "true");
+      } else if (analyticsSetting === "on") {
+        window.localStorage.removeItem(analyticsOptOutKey);
+      }
+
+      if (window.localStorage.getItem(analyticsOptOutKey) === "true") {
+        return;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){dataLayer.push(arguments);};
+      window.gtag("js", new Date());
+      window.gtag("config", "{{ site.google_analytics }}");
+
+      var googleTag = document.createElement("script");
+      googleTag.async = true;
+      googleTag.src = "https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}";
+      document.head.appendChild(googleTag);
+
       var scrollThresholds = [25, 50, 75, 90, 100];
       var sentScrollDepths = {};
       var sentSections = {};
