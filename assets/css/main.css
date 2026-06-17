@@ -122,6 +122,20 @@ main {
   padding-top: 28px;
 }
 
+.site-update {
+  margin: 18px 0 0;
+  max-width: 46rem;
+  color: var(--muted);
+  font-family: var(--display-font);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.site-update strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
 section {
   padding: 34px 0 38px;
   border-bottom: 1px solid var(--line);
